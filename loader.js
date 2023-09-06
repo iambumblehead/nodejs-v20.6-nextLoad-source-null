@@ -1,8 +1,18 @@
+import fs from 'node:fs/promises'
+
 export const load = async (url, context, nextLoad) => {
   if (context.format === 'commonjs') {
-    const res = await nextLoad(url, context)
-    if (res.source === null)
-      throw new Error('nextLoad source definition is null')
+    const nextLoadRes = await nextLoad(url, context)
+    const source = nextLoadRes.source === null
+        ? String(await fs.readFile(new URL(url)))
+        : String(nextLoadRes.source)
+
+    return {
+      format: nextLoadRes.format,
+      shortCircuit: true,
+      responseURL: url,
+      source: source
+    }
   }
 
   return nextLoad(url, context);

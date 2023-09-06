@@ -1,3 +1,3 @@
-import cjsmodule from './cjsmodule/cjsmodule.js'
+import cjsmodule from './cjsmoduleGrandParent/cjsmodule.js'
 
 export default true

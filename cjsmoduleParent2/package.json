@@ -1,0 +1,8 @@
+{
+  "type": "commonjs",
+  "description": "demonstrates problem at loader",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodejs/node.git"
+  }
+}
